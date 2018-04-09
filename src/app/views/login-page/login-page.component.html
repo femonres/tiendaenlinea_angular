@@ -3,7 +3,8 @@
     <div class="col-md-4 mx-auto">
       <h1 class="form-title">Iniciar Sesión</h1>
 
-      <form class="form-horizontal" (submit)="onLoginUser()">
+      <flash-messages></flash-messages>
+      <form class="form-horizontal" #loginForm="ngForm" (submit)="onLoginUser()">
         <div class="form-group">
           <label for="userEmail" class="control-label">Correo electrónico</label>
           <input type="email" name="userEmail" placeholder="Correo electrónico" class="form-control" required [(ngModel)]="userEmail" >
@@ -12,7 +13,7 @@
           <label for="userPasswd" class="control-label">Contraseña</label>
           <input type="password" name="userPasswd" placeholder="Contraseña" class="form-control" required [(ngModel)]="userPasswd" >
         </div>
-        <button type="submit" class="btn btn-success">Ingresar</button>
+        <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Ingresar</button>
       </form>
     </div>
   </div>

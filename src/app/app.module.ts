@@ -16,6 +16,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
+import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,11 +29,12 @@ import { AuthGuard } from './guards/auth.guard';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule,
+    FlashMessagesModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

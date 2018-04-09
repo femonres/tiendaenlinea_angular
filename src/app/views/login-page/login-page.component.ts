@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-login-page',
@@ -11,7 +12,11 @@ export class LoginPageComponent implements OnInit {
   public userEmail: string;
   public userPasswd: string;
 
-  constructor(public authService: AuthService, public router: Router) { }
+  constructor(
+    public router: Router,
+    public authService: AuthService,
+    public flashMessage: FlashMessagesService
+  ) { }
 
   ngOnInit() {
   }
@@ -24,7 +29,8 @@ export class LoginPageComponent implements OnInit {
       })
       .catch((err) => {
         console.error('Ops', err);
-        this.router.navigate(['/login']);
+        this.flashMessage.show('Usuario y/o contraseña no validos.', {cssClass: 'alert-danger', timeout: 5000});
+        // this.router.navigate(['/login']);
       });
   }
 }
