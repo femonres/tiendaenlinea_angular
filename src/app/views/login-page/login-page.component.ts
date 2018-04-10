@@ -28,9 +28,9 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate(['/']);
       })
       .catch((err) => {
+        this.userPasswd = '';
         console.error('Ops', err);
         this.flashMessage.show('Usuario y/o contraseña no validos.', {cssClass: 'alert-danger', timeout: 5000});
-        // this.router.navigate(['/login']);
       });
   }
 }
