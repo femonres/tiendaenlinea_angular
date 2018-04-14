@@ -16,6 +16,9 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
 import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductInCartComponent } from './components/product-in-cart/product-in-cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messag
     MainPageComponent,
     LoginPageComponent,
     CartPageComponent,
-    TopbarComponent
+    TopbarComponent,
+    ProductSearchComponent,
+    ProductItemComponent,
+    ProductInCartComponent
   ],
   imports: [
     BrowserModule,
