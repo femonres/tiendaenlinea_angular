@@ -12,10 +12,14 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 
 import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
+
+import { ProductService } from './services/product.service';
+
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductInCartComponent } from './components/product-in-cart/product-in-cart.component';
@@ -36,10 +40,11 @@ import { ProductInCartComponent } from './components/product-in-cart/product-in-
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     FormsModule,
     FlashMessagesModule
   ],
-  providers: [AuthService, AuthGuard, FlashMessagesService],
+  providers: [AuthService, AuthGuard, FlashMessagesService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

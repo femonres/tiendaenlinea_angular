@@ -1,9 +1,9 @@
-<div class="card thumbnail">
-    <img class="card-img-top" src="assets/img/products/aguacate.jpg" alt="Product Image">
+<div class="card thumbnail" *ngIf="product">
+    <img class="card-img-top" src="assets/img/products/{{product.picture}}" alt="Product Image">
     <div class="card-body">
-        <h5 class="card-title">Aguacate</h5>
-        <p class="card-text">Precio<span>$ 0</span></p>
-        <p class="card-text">Unidades disponibles:<span>0</span></p>
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">Precio: <span>$ {{product.price}}</span></p>
+        <p class="card-text">Unidades disponibles: <span>{{product.avalible}}</span></p>
         <div class="row form-group">
             <div class="col">
                 <div class="btn-toolbar">

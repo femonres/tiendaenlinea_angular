@@ -16,8 +16,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3">
-                            <app-product-item></app-product-item>
+                        <div class="col-3" *ngFor="let productItem of productList">
+                            <app-product-item [product]="productItem"></app-product-item>
                         </div>
                     </div>
                 </div>
