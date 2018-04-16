@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from './../../services/auth.service';
+import { ProductInCart } from '../../models/productInCart';
 
 @Component({
   selector: 'app-topbar',
@@ -7,6 +8,8 @@ import { AuthService } from './../../services/auth.service';
   styleUrls: ['./topbar.component.css']
 })
 export class TopbarComponent implements OnInit {
+
+  @Input() inCart: ProductInCart;
 
   constructor(public auth: AuthService) { }
 

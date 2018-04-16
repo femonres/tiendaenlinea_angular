@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../models/product';
+import { ProductInCart } from './../../models/productInCart';
+
 
 @Component({
   selector: 'app-main-page',
@@ -10,8 +13,9 @@ import { Product } from './../../models/product';
 export class MainPageComponent implements OnInit {
 
   productList: Product[];
+  productsInCart: ProductInCart[];
 
-  constructor(private productService: ProductService) { }
+  constructor(private authService: AuthService, private productService: ProductService) { }
 
   ngOnInit() {
     this.productService.getProducts().snapshotChanges().subscribe(
@@ -25,6 +29,20 @@ export class MainPageComponent implements OnInit {
         });
       }
     );
+
+    this.authService.firbaseAuth.auth.onAuthStateChanged(authUser => {
+      if (authUser) {
+        this.productService.getProductsInCart(authUser.uid).snapshotChanges().subscribe(
+          item => {
+            this.productsInCart = [];
+            item.forEach(element => {
+              const inCart = element.payload.toJSON();
+              this.productsInCart.push(inCart as ProductInCart);
+            });
+          }
+        );
+      }
+    });
   }
 
 }
