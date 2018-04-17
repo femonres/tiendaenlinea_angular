@@ -11,12 +11,15 @@
                                 <h3>Catálogo de Productos</h3>
                             </div>
                             <div class="col-2">
-                                <app-product-search></app-product-search>
+                                <div class="form-group">
+                                    <label for="productSearch">¿Qué estás buscando?</label>
+                                    <input type="text" class="form-control" id="productSearch" placeholder="Producto a buscar" [(ngModel)]="searchText">
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3" *ngFor="let productItem of productList">
+                        <div class="col-3" *ngFor="let productItem of productList | filter: searchText">
                             <app-product-item [product]="productItem"></app-product-item>
                         </div>
                     </div>

@@ -20,9 +20,9 @@ import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messag
 
 import { ProductService } from './services/product.service';
 
-import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductInCartComponent } from './components/product-in-cart/product-in-cart.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -31,9 +31,9 @@ import { ProductInCartComponent } from './components/product-in-cart/product-in-
     LoginPageComponent,
     CartPageComponent,
     TopbarComponent,
-    ProductSearchComponent,
     ProductItemComponent,
-    ProductInCartComponent
+    ProductInCartComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
