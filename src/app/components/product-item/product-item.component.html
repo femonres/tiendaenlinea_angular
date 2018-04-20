@@ -9,13 +9,13 @@
                 <div class="btn-toolbar">
                     <div class="btn-group">
                         <button class="btn btn-primary" (click)="openModalWithComponent()">Detalles</button>
-                        <button class="btn btn-warning">Añadir</button>
+                        <button class="btn btn-warning" (click)="addItemToCart(amount.value)">Añadir</button>
                     </div>
                 </div>
                 
             </div>
             <div class="col">
-                <input type="number" class="form-control" min="1">
+                <input type="number" class="form-control" min="1" max="{{product.avalible}}" value="1" #amount>
             </div>
         </div>
     </div>
