@@ -1,9 +1,9 @@
 <div class="media">
-    <img class="align-self-center mr-3" src="assets/img/products/ajo.jpg" width="64" height="64" alt="Product image">
+    <img class="align-self-center mr-3" src="assets/img/products/{{item.product.picture}}" width="64" height="64" alt="Product image">
     <div class="media-body">
-        <h4 class="media-heading">Ajo</h4>
-        <span><b>Unidades: </b>1</span>
+        <h4 class="media-heading">{{item.product.name}}</h4>
+        <span><b>Unidades: </b>{{item.amount}}</span>
         <br>
-        <span><b>Subtotal: </b>$ 200</span>
+        <span><b>Subtotal: </b>$ {{item.product.price}}</span>
     </div>
 </div>

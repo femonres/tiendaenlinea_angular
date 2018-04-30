@@ -12,8 +12,8 @@
                         <div class="col">
 
                             <ul class="list-group">
-                                <li class="list-group-item">
-                                    <app-product-in-cart></app-product-in-cart>
+                                <li class="list-group-item" *ngFor="let inCart of productsInCart">
+                                    <app-product-in-cart [item]="inCart"></app-product-in-cart>
                                 </li>
                                 
                             </ul>
@@ -21,10 +21,10 @@
                         </div>
                         <div class="col">
                             <h1>Total a pagar</h1>
-                            <h3>$ 0</h3>
+                            <h3>$ {{totalValue}}</h3>
 
-                            <button disabled="disabled" class="btn btn-warning">Cancelar</button>
-                            <button disabled="disabled" class="btn btn-success">Pagar</button>
+                            <button [disabled]="!productsInCart || productsInCart.length == 0" class="btn btn-warning" (click)="returnItemsInCart()">Cancelar</button>
+                            <button [disabled]="!productsInCart || productsInCart.length == 0" class="btn btn-success" (click)="payItemsInCart()">Pagar</button>
                         </div>
                     </div>
                 </div>

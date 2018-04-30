@@ -23,8 +23,8 @@ export class LoginPageComponent implements OnInit {
 
   onLoginUser() {
     this.authService.validateUser(this.userEmail, this.userPasswd)
-      .then((res) => {
-        console.log('Login correcto', res);
+      .then(_ => {
+        console.log('Login correcto');
         this.router.navigate(['/']);
       })
       .catch((err) => {

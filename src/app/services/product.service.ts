@@ -25,15 +25,27 @@ export class ProductService {
       product: {
         name: product.name,
         picture: product.picture,
-        price: product.price
+        price: product.price,
+        avalible: product.avalible
       },
       amount: amount
-    });
+    }).then((err) => {
+      if (err) {
+        console.log('Fallo?', err);
+      }
 
-    this.updateProductInStorage(product, amount);
+      this.updateProductInStorage(product, product.avalible - amount);
+    });
   }
 
-  updateProductInStorage(product: Product, amount: number) {
-    this.productList.update(product.$key, {avalible: product.avalible - amount});
+  payProductsInCart() {
+    return this.productsInCart.remove();
+  }
+
+  returnProductsInCart() {}
+
+  updateProductInStorage(product: Product, avalible: number) {
+    // return this.productList.update(productKey, {avalible: avalible});
+    return this.firebase.list('product').update(product.$key, {avalible: avalible});
   }
 }

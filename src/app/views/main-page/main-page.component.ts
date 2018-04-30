@@ -18,29 +18,26 @@ export class MainPageComponent implements OnInit {
   constructor(private authService: AuthService, private productService: ProductService) { }
 
   ngOnInit() {
-    this.productService.getProducts().snapshotChanges().subscribe(
-      item => {
-        this.productList = [];
-        item.forEach(element => {
-          const product = element.payload.toJSON();
-          product['$key'] = element.key;
+    this.productService.getProducts().snapshotChanges().subscribe(item => {
+      this.productList = [];
+      console.log('Cambio en la DB detectado', item);
+      item.forEach(element => {
+        const product = element.payload.toJSON();
+        product['$key'] = element.key;
 
-          this.productList.push(product as Product);
-        });
-      }
-    );
+        this.productList.push(product as Product);
+      });
+    });
 
     this.authService.firbaseAuth.auth.onAuthStateChanged(authUser => {
       if (authUser) {
-        this.productService.getProductsInCart(authUser.uid).snapshotChanges().subscribe(
-          item => {
-            this.productsInCart = [];
-            item.forEach(element => {
-              const inCart = element.payload.toJSON();
-              this.productsInCart.push(inCart as ProductInCart);
-            });
-          }
-        );
+        this.productService.getProductsInCart(authUser.uid).snapshotChanges().subscribe(item => {
+          this.productsInCart = [];
+          item.forEach(element => {
+            const inCart = element.payload.toJSON();
+            this.productsInCart.push(inCart as ProductInCart);
+          });
+        });
       }
     });
   }
